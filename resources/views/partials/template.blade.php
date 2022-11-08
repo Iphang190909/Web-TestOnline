@@ -139,7 +139,7 @@
 
 
     <script src="{{ asset('') }}js/dashboard/dashboard-1.js"></script>
-
+    @stack('js')
 </body>
 
 </html>

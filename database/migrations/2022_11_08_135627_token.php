@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_user')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
-            $table->time('expired');
+            $table->date('expired');
             $table->foreignId('id_role')->nullable()->constrained('user_role')->cascadeOnDelete()->cascadeOnUpdate();
             $table->rememberToken();
             $table->timestamps();
