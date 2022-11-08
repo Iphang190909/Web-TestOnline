@@ -61,9 +61,49 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                                <a href="" class="btn btn-primary">Kembali</a>
+                                {{-- <a href="" class="btn btn-primary">Kembali</a> --}}
                                 <button type="submit" class="btn btn-success mx-2">Simpan</button>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Table Striped</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-responsive-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Token</th>
+                                            <th>Expired</th>
+                                            <th>Author</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($data as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ ucwords($item->name) }}</td>
+                                                <td>{{ ucwords($item->expired) }}</td>
+                                                <td>{{ ucwords($item->role) }}</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a href="{{ route('token.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('token.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="6" class="text-center">Data tidak ada</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
