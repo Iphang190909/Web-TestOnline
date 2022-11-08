@@ -17,7 +17,8 @@ class TokenController extends Controller
      */
     public function index()
     {
-        return view('pages.token.index');
+        $data = Token::latest()->get();
+        return view('pages.token.index',compact('data'));
     }
 
     /**
