@@ -24,6 +24,13 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    //management-user
+    Route::prefix('management-user')->group(function () {
+        //admin
+        Route::resource('admin',TokenController::class);
+        //peserta
+        Route::resource('peserta',TokenController::class);
+    });
     Route::prefix('dashboard')->group(function () {
         Route::resource('token',TokenController::class);
     });
