@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,10 +24,10 @@ class UserSeeder extends Seeder
              $data = DB::table('user_role')->insertGetId([
                 'role' => $role[$i],
             ]);
-            DB::table('users')->insert([
+            User::create([
                 'name' => $user[$i],
                 'email' => $user[$i].'@gmail.com',
-                'password' => $user[$i],
+                'password' => Hash::make('$user[$i]'),
                 'id_role' => $data
             ]);
         };
