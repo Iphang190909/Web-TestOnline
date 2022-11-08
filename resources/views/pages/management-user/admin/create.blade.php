@@ -56,19 +56,8 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="" class="font-weight-bold">Password : <span class="text-danger">*</span></label>
-                                            <input type="text" name="password" id="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror">
+                                            <input type="password" name="password" id="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror">
                                             @error('password')
-                                                <div class="invalid-feedback">
-                                                    {{$message}}.
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <div class="form-group">
-                                                <label for="" name="id_role" readonly class="font-weight-bold">Role : <span class="text-danger">*</span></label>
-                                                <input type="text" name="id_role" id="id_role" value="{{ old('id_role') }}" placeholder="Admin" class="form-control @error('id_role') is-invalid @enderror" readonly>
-                                            </div>
-                                            @error('id_role')
                                                 <div class="invalid-feedback">
                                                     {{$message}}.
                                                 </div>

@@ -8,6 +8,7 @@ use App\Models\UserRole;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ManagementUserAdminController extends Controller
 {
@@ -50,7 +51,6 @@ class ManagementUserAdminController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => "required|min:8",
-            'id_role' => 'required',
         ],
         [
             'required' => 'Field ini wajib disi',
@@ -59,16 +59,17 @@ class ManagementUserAdminController extends Controller
             $add = new User();
             $add->name = $request->get('name');
             $add->email = $request->get('email');
-            $add->password = $request->get('password');
-            $add->id_role = 'administrator';
+            $add->password =  Hash::make($request['password']);
+            $add->id_role = '1';
             $add->created_at = now();
             $add->updated_at = null;
-        return $add;
             $add->save();
             return redirect()->route('admin.index')->withStatus('Berhasil menambahkan data.');
         } catch (Exception $e) {
+            // return $e;
             return redirect()->route('admin.index')->withError('Terjadi kesalahan.');
         } catch (QueryException $e){
+            // return $e;
             return redirect()->route('admin.index')->withError('Terjadi kesalahan.');
         }
     }
