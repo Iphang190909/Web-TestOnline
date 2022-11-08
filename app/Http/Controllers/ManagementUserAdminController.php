@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ManagementUser;
 use Illuminate\Http\Request;
 
 class ManagementUserAdminController extends Controller
@@ -13,7 +14,8 @@ class ManagementUserAdminController extends Controller
      */
     public function index()
     {
-        //
+        $data = ManagementUser::latest()->get();
+        return view('pages.management-user.admin.index',compact('data'));
     }
 
     /**

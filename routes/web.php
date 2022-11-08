@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     //management-user
-    Route::prefix('management-user')->group(function () {
+    Route::prefix('dashboard')->group(function () {
         //admin
         Route::resource('admin',TokenController::class);
         //peserta
