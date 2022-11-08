@@ -11,7 +11,7 @@
                         class="icon icon-single-04"></i><span class="nav-text">Management User</span></a>
                 <ul aria-expanded="false">
                     <li><a href="./app-profile.html">Admin</a></li>
-                    <li><a href="./app-calender.html">User</a></li>
+                    <li><a href="./app-calender.html">Peserta</a></li>
                 </ul>
             </li>
             <li>
