@@ -71,7 +71,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Table Token</h4>
+                            <h4 class="card-title">Tabel Token</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
