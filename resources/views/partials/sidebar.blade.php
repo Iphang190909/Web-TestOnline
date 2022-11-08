@@ -15,7 +15,7 @@
                 </ul>
             </li>
             <li>
-                <a href="widget-basic.html" aria-expanded="false"><i class="icon icon-world-2"></i><span
+                <a href="{{ route('token.index') }}" aria-expanded="false"><i class="icon icon-world-2"></i><span
                 class="nav-text">Token</span></a>
             </li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
