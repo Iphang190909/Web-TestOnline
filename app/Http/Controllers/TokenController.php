@@ -100,6 +100,14 @@ class TokenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $delete = Token::findOrFail($id);
+            $delete->delete();
+            return redirect()->route('token.index')->withStatus('Berhasil menghapus data.');
+        } catch (Exception $e) {
+            return redirect()->route('token.index')->withError('Terjadi kesalahan.');
+        } catch (QueryException $e){
+            return redirect()->route('token.index')->withError('Terjadi kesalahan.');
+        }
     }
 }

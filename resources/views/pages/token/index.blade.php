@@ -33,6 +33,9 @@
                     </ol>
                 </div>
             </div>
+            <div class="">
+                @include('components.notifications')
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -68,7 +71,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Table Striped</h4>
+                            <h4 class="card-title">Table Token</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -78,7 +81,6 @@
                                             <th>#</th>
                                             <th>Token</th>
                                             <th>Expired</th>
-                                            <th>Author</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -88,11 +90,15 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ ucwords($item->name) }}</td>
                                                 <td>{{ ucwords($item->expired) }}</td>
-                                                <td>{{ ucwords($item->role) }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="{{ route('token.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a>
-                                                        <a href="{{ route('token.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a>
+                                                        {{-- <a href="{{ route('token.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('token.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a> --}}
+                                                        <form action="{{ route('token.destroy',$item->id) }}" class="p-0 m-0" method="POST" onsubmit="return confirm('Move data to trash? ')">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash"></i></button>
+                                                        </form>
                                                     </div>
                                                 </td>
                                             </tr>
