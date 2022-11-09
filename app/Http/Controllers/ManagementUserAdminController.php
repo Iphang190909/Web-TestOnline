@@ -64,6 +64,7 @@ class ManagementUserAdminController extends Controller
             $add->created_at = now();
             $add->updated_at = null;
             $add->save();
+            // return $add;
             return redirect()->route('admin.index')->withStatus('Berhasil menambahkan data.');
         } catch (Exception $e) {
             // return $e;
@@ -93,7 +94,9 @@ class ManagementUserAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        // return $id;
+        $data = User::find($id);
+        return view('pages.management-user.admin.edit', compact('data'));
     }
 
     /**
@@ -105,7 +108,30 @@ class ManagementUserAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => "required|min:8",
+        ],
+        [
+            'required' => 'Field ini wajib disi',
+        ]);
+        try{
+            $update = User::findOrFail($id);
+            $update->name = $request->get('name');
+            $update->email = $request->get('email');
+            $update->password =  Hash::make($request['password']);
+            $update->id_role = '1';
+            $update->updated_at = now();
+            $update->update();
+            return redirect()->route('admin.index')->withStatus('Berhasil mengganti data.');
+        } catch (Exception $e) {
+            // return $e;
+            return redirect()->route('admin.index')->withError('Terjadi kesalahan.');
+        } catch (QueryException $e){
+            // return $e;
+            return redirect()->route('admin.index')->withError('Terjadi kesalahan.');
+        }
     }
 
     /**
@@ -116,6 +142,14 @@ class ManagementUserAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $delete = User::findOrFail($id);
+            $delete->delete();
+            return redirect()->route('admin.index')->withStatus('Berhasil menghapus data.');
+        } catch (Exception $e) {
+            return redirect()->route('admin.index')->withError('Terjadi kesalahan.');
+        } catch (QueryException $e){
+            return redirect()->route('admin.index')->withError('Terjadi kesalahan.');
+        }
     }
 }

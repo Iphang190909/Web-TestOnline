@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagementUserAdminController;
+use App\Http\Controllers\ManagementUserInstansiController;
 use App\Http\Controllers\ManagementUserPesertaController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
@@ -32,10 +33,14 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('admin',ManagementUserAdminController::class);
         //peserta
         Route::resource('peserta',ManagementUserPesertaController::class);
+        //instansi
+        Route::resource('instansi', ManagementUserInstansiController::class);
     });
     // token
     Route::prefix('token-management')->group(function () {
+        Route::post('token-restore/{id}', [TokenController::class, 'restore'])->name('token.restore');
         Route::resource('token',TokenController::class);
+        Route::delete('token-deletePermanent/{id}', [TokenController::class, 'deletePermanent'])->name('token.deletePermanent');
     });
 
 });

@@ -47,7 +47,7 @@
                                                 <td>{{ ucwords($item->email) }}</td>
                                                 <td>
                                                     <div class="btn-group">
-                                                        <a href="{{ route('admin.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a>
+                                                        {{-- <a href="{{ route('admin.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a> --}}
                                                         <a href="{{ route('admin.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a>
                                                         <form action="{{ route('admin.destroy',$item->id) }}" class="p-0 m-0" method="POST" onsubmit="return confirm('Move data to trash? ')">
                                                             @method('delete')

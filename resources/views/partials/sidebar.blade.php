@@ -12,6 +12,7 @@
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.index') }}">Admin</a></li>
                     <li><a href="{{ route('peserta.index') }}">Peserta</a></li>
+                    <li><a href="{{ route('instansi.index') }}">Instansi</a></li>
                 </ul>
             </li>
             <li>

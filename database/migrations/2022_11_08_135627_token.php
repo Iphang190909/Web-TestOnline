@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('name');
             $table->date('expired');
             $table->foreignId('id_role')->nullable()->constrained('user_role')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('id_instansi')->nullable()->constrained('instansi')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('status', ['true', 'false']);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

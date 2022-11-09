@@ -22,7 +22,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header ">
-                            <h4 class="card-title">Form Edit Data</h4>
+                            <h4 class="card-title">Form Tambah Data</h4>
                             <p>Input Data</p>
                         </div>
                         <hr>
@@ -33,13 +33,12 @@
                                 </div>
                             @endif
                             <div class="basic-form">
-                                <form action="{{ route('admin.update', $data->id) }}" method="POST" enctype="multipart/form-data">
-                                    @method('PUT')
+                                <form action="{{ route('peserta.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="" class="font-weight-bold">Name : <span class="text-danger">*</span></label>
-                                            <input type="text" name="name" id="name" value="{{ old('name', $data->name) }}" class="form-control @error('name') is-invalid @enderror">
+                                            <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{$message}}.
@@ -48,7 +47,7 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="" class="font-weight-bold">Email : <span class="text-danger">*</span></label>
-                                            <input type="text" name="email" id="email" value="{{ old('email', $data->email) }}" class="form-control @error('email') is-invalid @enderror">
+                                            <input type="text" name="email" id="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror">
                                             @error('email')
                                                 <div class="invalid-feedback">
                                                     {{$message}}.
@@ -57,7 +56,7 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label for="" class="font-weight-bold">Password : <span class="text-danger">*</span></label>
-                                            <input type="password" name="password" id="password" value="" class="form-control @error('password') is-invalid @enderror">
+                                            <input type="password" name="password" id="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror">
                                             @error('password')
                                                 <div class="invalid-feedback">
                                                     {{$message}}.
@@ -68,7 +67,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="{{ route('admin.index') }}" class="btn btn-primary">Kembali</a>
+                            <a href="{{ route('peserta.index') }}" class="btn btn-primary">Kembali</a>
                             <button type="submit" class="btn btn-success mx-2">Simpan</button>
                             </form>
                         </div>

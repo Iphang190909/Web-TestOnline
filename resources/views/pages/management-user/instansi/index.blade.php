@@ -40,48 +40,40 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Tambah Token</h4>
+                            <h4 class="card-title">Tambah Instansi</h4>
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form action="{{ route('token.store') }}" method="POST">
+                                <form action="{{ route('instansi.store') }}" method="POST">
                                     @csrf
                                     <div class="form-row">
                                         <div class="form-group col-md-8 mx-auto">
-                                            <label for="" name="id_instansi" class="font-weight-bold">Nama Instansi : <span class="text-danger">*</span></label>
-                                            <select class="form-control" id="" name="id_instansi">
-                                                <option>-- Pilih Instansi --</option>
-                                                @forelse ($instansi as $item)
-                                                    <option value="{{ $item->id }}" {{ old('id_instansi') == $item->id ? 'selected' : '' }}> {{ $item->nama_instansi }} </option>
-                                                @empty
-                                                @endforelse
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-8 mx-auto">
-                                            <label for="" class="font-weight-bold">Token : <span class="text-danger">*</span></label>
+                                            <label for="" class="font-weight-bold">Nama Instansi : <span class="text-danger">*</span></label>
                                             <div class="input-group mb-3">
-                                                <input type="text" name="token" class="form-control" placeholder="Silahkan generate token" id="generate">
-                                                <div class="input-group-append">
-                                                    <a class="btn btn-primary text-white" id="keygen">Generate Token</a>
-                                                </div>
+                                                <input type="text" name="nama_instansi" class="form-control" placeholder="Masukkan Nama Instansi" id="generate">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-8 mx-auto">
-                                            <label for="" class="font-weight-bold">Tanggal Expired : <span class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" name="tgl_expired" id="datepicker" value="{{ date('Y-m-d', strtotime(now()->toDateString())) }}">
+                                            <label for="" class="font-weight-bold">Alamat : <span class="text-danger">*</span></label>
+                                            <textarea name="alamat" id="" class="form-control @error('alamat') is-invalid @enderror" cols="30" rows="5">{{ old('alamat') }}</textarea>
+                                            @error('alamat')
+                                                <div class="invalid-feedback">
+                                                    {{$message}}.
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                                {{-- <a href="" class="btn btn-primary">Kembali</a> --}}
+                                <a href="{{ route('instansi.index') }}" class="btn btn-primary">Batal</a>
                                 <button type="submit" class="btn btn-success mx-2">Simpan</button>
                             </form>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Tabel Token</h4>
+                            <h4 class="card-title">Tabel Nama Instansi</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -89,10 +81,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Token</th>
                                             <th>Nama Instansi</th>
-                                            <th>Tanggal Expired</th>
-                                            <th>Status</th>
+                                            {{-- <th>Alamat</th> --}}
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -100,23 +90,13 @@
                                         @forelse ($data as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ ucwords($item->name) }}</td>
                                                 <td>{{ ucwords($item->nama_instansi) }}</td>
-                                                <td>{{ ucwords($item->expired) }}</td>
-                                                <td>
-                                                    <span class="badge {{ $item->status != 'false' ? 'badge-info' : 'badge-dark' }} ">{{ $item->status != 'false' ? 'aktif' : 'tidak aktif' }}</span>
-                                                </td>
+                                                {{-- <td>{{ ucwords($item->alamat) }}</td> --}}
                                                 <td>
                                                     <div class="btn-group">
-                                                        <form action="{{ $item->status != 'false' ? route('token.destroy',$item->id) : route('token.restore',$item->id) }}" class="p-0 m-0" method="POST" onsubmit="return confirm('{{ $item->status != 'false' ? 'Move data to trash? ' : 'return data ?' }}')">
-                                                            @if ($item->status != 'false')
-                                                                @method('delete')
-                                                            @endif
-                                                            @csrf
-                                                            <button class="btn {{ $item->status != 'false' ? 'btn-danger' : 'btn-warning' }} " data-toggle="tooltip" data-placement="top" title="Ganti Status"><i class="fa fa-power-off"></i></button>
-                                                        </form>
-                                                        {{-- <a href="{{ route('token.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a> --}}
-                                                        <form action="{{route('token.deletePermanent', $item->id)}}" class="p-0 m-0" method="POST" onsubmit="return confirm('Move data to trash? ')">
+                                                        <a href="{{ route('instansi.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('instansi.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a>
+                                                        <form action="{{ route('instansi.destroy',$item->id) }}" class="p-0 m-0" method="POST" onsubmit="return confirm('Move data to trash? ')">
                                                             @method('delete')
                                                             @csrf
                                                             <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash"></i></button>
