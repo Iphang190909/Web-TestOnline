@@ -19,7 +19,7 @@ class ManagementUserAdminController extends Controller
      */
     public function index()
     {
-        $data = User::select('*','user_role.role')
+        $data = User::select('users.id','users.*','user_role.role')
                     ->join('user_role','user_role.id','users.id_role')
                     ->where('user_role.role','admin')
                     ->orderBy('users.created_at','DESC')

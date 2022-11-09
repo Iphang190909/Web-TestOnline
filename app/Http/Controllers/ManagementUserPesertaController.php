@@ -17,12 +17,11 @@ class ManagementUserPesertaController extends Controller
      */
     public function index()
     {
-        $data = User::select('*','user_role.role')
+        $data = User::select('users.id','users.*', 'user_role.role')
                     ->join('user_role','user_role.id','users.id_role')
                     ->where('user_role.role','peserta')
                     ->orderBy('users.created_at','DESC')
                     ->get();
-        // return $data;
         return view('pages.management-user.peserta.index',compact('data'));
     }
 
