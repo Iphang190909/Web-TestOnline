@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('soal', function (Blueprint $table) {
+        Schema::create('jawaban', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('kode_soal')->unique();
+            $table->foreignId('id_soal')->nullable()->constrained('soal')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_user')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->enum('status', [true,false]);
-            $table->rememberToken();
+            $table->string('skor');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('jawaban');
     }
 };

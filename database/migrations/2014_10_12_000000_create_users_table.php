@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->foreignId('id_role')->nullable()->constrained('user_role');
+            $table->enum('is_google', [1,0])->nullable();
+            $table->string('ip')->nullable();
+            $table->enum('verifikasi_email', [1,0])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

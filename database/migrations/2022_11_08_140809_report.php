@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('report', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->date('tgl_ujian');
+            $table->dateTime('tgl_ujian');
             $table->foreignId('id_soal')->nullable()->constrained('soal')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('nilai');
             $table->rememberToken();

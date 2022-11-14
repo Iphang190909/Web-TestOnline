@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nim')->unique();
-            $table->string('nama_lengkap');
+            $table->string('nama_lengkap')->nullable();
             $table->string('email');
-            $table->enum('gender', ['pria, wanita']);
+            $table->enum('gender', ['L','P']);
             $table->text('alamat');
             $table->date('ttl');
             $table->string('password');

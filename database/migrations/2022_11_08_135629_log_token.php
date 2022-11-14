@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('id_user')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_token')->nullable()->constrained('token')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id_soal')->nullable()->constrained('soal')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->date('tgl_akses');
+            $table->dateTime('tgl_akses');
             $table->rememberToken();
             $table->timestamps();
         });
