@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagementUserAdminController;
 use App\Http\Controllers\ManagementUserInstansiController;
 use App\Http\Controllers\ManagementUserPesertaController;
+use App\Http\Controllers\ManagementAssesmentSoalController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,12 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('token',TokenController::class);
         Route::delete('token-deletePermanent/{id}', [TokenController::class, 'deletePermanent'])->name('token.deletePermanent');
     });
+    // management-assesment
+    Route::prefix('assesment')->group(function () {
+        //soal
+        Route::resource('soal',ManagementAssesmentSoalController::class);
+    });
+
 
 });
 require __DIR__.'/auth.php';

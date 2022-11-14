@@ -22,8 +22,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <h4 class="card-title">List Data Peserta</h4>
-                            <a href="{{ route('peserta.create') }}" class="btn btn-primary">
+                            <h4 class="card-title">List Data Soal</h4>
+                            <a href="{{ route('soal.create') }}" class="btn btn-primary">
                                 Tambah data
                             </a>
                         </div>
@@ -34,8 +34,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nama</th>
-                                            <th>Email</th>
+                                            <th>Soal</th>
+                                            <th>Jawaban</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -48,8 +48,8 @@
                                                 <td>
                                                     <div class="btn-group">
                                                         {{-- <a href="{{ route('admin.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a> --}}
-                                                        <a href="{{ route('peserta.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a>
-                                                        <form action="{{ route('peserta.destroy',$item->id) }}" class="p-0 m-0" method="POST" onsubmit="return confirm('Move data to trash? ')">
+                                                        <a href="{{ route('soal.edit',$item->id) }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fa fa-edit" ></i></a>
+                                                        <form action="{{ route('soal.destroy',$item->id) }}" class="p-0 m-0" method="POST" onsubmit="return confirm('Move data to trash? ')">
                                                             @method('delete')
                                                             @csrf
                                                             <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash"></i></button>

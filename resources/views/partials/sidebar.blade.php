@@ -22,7 +22,7 @@
             <li><a class="has-arrow" href="#" aria-expanded="false"><i
                         class="icon icon-globe-2"></i><span class="nav-text">Management Assesment</span></a>
                 <ul aria-expanded="false">
-                    <li><a href="./chart-flot.html">Soal</a></li>
+                    <li><a href="{{ route('soal.index') }}">Soal</a></li>
                     <li><a href="./chart-morris.html">Hasil Tes</a></li>
                 </ul>
             </li>
