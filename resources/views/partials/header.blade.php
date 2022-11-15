@@ -10,10 +10,13 @@
                             <i class="mdi mdi-account"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="./page-login.html" class="dropdown-item">
+                            <form action="{{route('logout')}}" method="post" >
                                 {{-- <i class="icon-key"></i> --}}
-                                <span class="ml-2" style="color: red">Logout</span>
-                            </a>
+                                @csrf
+                                <button class="dropdown-item" type="submit">
+                                    <span class="ml-2" style="color: red">Logout</span>
+                                </button>
+                            </form>
                         </div>
                     </li>
                 </ul>
