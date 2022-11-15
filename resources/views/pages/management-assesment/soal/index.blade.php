@@ -35,7 +35,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Soal</th>
-                                            <th>Jawaban</th>
+                                            <th>Score</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -43,8 +43,8 @@
                                         @forelse ($data as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ ucwords($item->name) }}</td>
-                                                <td>{{ ucwords($item->email) }}</td>
+                                                <td>{{ ucwords($item->title) }}</td>
+                                                <td>{{ ucwords($item->skor) }}</td>
                                                 <td>
                                                     <div class="btn-group">
                                                         {{-- <a href="{{ route('admin.show',$item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Show Data"><i class="fa fa-eye"></i></a> --}}

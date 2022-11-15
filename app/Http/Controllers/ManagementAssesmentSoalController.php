@@ -15,7 +15,7 @@ class ManagementAssesmentSoalController extends Controller
      */
     public function index()
     {
-        $data = ManagementSoal::all();
+        $data = ManagementSoal::latest()->get();
         return view('pages.management-assesment.soal.index',compact('data'));
     }
 
@@ -26,7 +26,7 @@ class ManagementAssesmentSoalController extends Controller
      */
     public function create()
     {
-        $data = ManagementSoal::all();
+        $data = ManagementSoal::latest()->get();
         return view('pages.management-assesment.soal.create',compact('data'));
     }
 

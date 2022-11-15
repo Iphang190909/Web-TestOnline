@@ -21,46 +21,55 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header ">
-                            <h4 class="card-title">Form Tambah Soal</h4>
-                            <p>Input Data</p>
-                        </div>
-                        <hr>
+                        <div class="card-header">
+                            <h4 class="card-title">Form Tambah Pertanyaan</h4>
+                        </div>                      
                         <div class="card-body">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <strong>Terdapat kesalahan dalam pengisian form. Silahkan cek kembali data form anda!</strong>
-                                </div>
-                            @endif
                             <div class="basic-form">
-                                <form action="{{ route('soal.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('token.store') }}" method="POST">
                                     @csrf
                                     <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <label for="" class="font-weight-bold">Soal : <span class="text-danger">*</span></label>
-                                            <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror">
-                                            @error('name')
-                                                <div class="invalid-feedback">
-                                                    {{$message}}.
-                                                </div>
-                                            @enderror
+                                        <div class="form-group col-md-8 mx-auto">
+                                            <label for="" class="font-weight-bold">Kode Soal : <span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <input type="text" name="kode_soal" class="form-control" placeholder="Kode Soal Otomatis" style="background-color: #EFF5F5" id="" readonly>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="" class="font-weight-bold">Jawaban : <span class="text-danger">*</span></label>
-                                            <input type="text" name="email" id="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror">
-                                            @error('email')
-                                                <div class="invalid-feedback">
-                                                    {{$message}}.
+                                        <div class="form-group col-md-8 mx-auto">
+                                            <label for="" name="id_instansi" class="font-weight-bold">Nama Instansi : <span class="text-danger">*</span></label>
+                                            <select class="form-control" id="" name="id_instansi">
+                                                <option>-- Pilih Instansi --</option>
+                                                {{-- @forelse ($instansi as $item)
+                                                    <option value="{{ $item->id }}" {{ old('id_instansi') == $item->id ? 'selected' : '' }}> {{ $item->nama_instansi }} </option>
+                                                @empty
+                                                @endforelse --}}
+                                            </select>
+                                        </div>
+                                        <div class="form-group-dinamis col-md-8 mx-auto">
+                                            <label for="pertanyaan" class="font-weight-bold">Pertanyaan : <span class="text-danger">*</span></label>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                        <input class="form-control" placeholder="Inputkan Pertanyaan" type="text" name="pertanyaan[]" value=""/>
                                                 </div>
-                                            @enderror
+                                                <div class="col-md-2">
+                                                        <button class="btn btn-success add_pertanyaan" href="javascript:void(0);" id="add_pertanyaan" title="Add field">TAMBAH</button>
+                                                </div>           
+                                            </div>
+                                            <div id="extra-pertanyaan"></div>
+                                        </div>
+                                        <div class="form-group col-md-8 mt-3 mx-auto">
+                                            <label for="" class="font-weight-bold">Nilai : <span class="text-danger">*</span></label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" name="skor" class="form-control" placeholder="Inputkan nilai untuk soal ini" id="">
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="card-footer d-flex justify-content-end">
+                                        <a href="{{ route('soal.index') }}" class="btn btn-primary">Kembali</a>
+                                        <button type="submit" class="btn btn-success mx-2">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-end">
-                            <a href="{{ route('soal.index') }}" class="btn btn-primary">Kembali</a>
-                            <button type="submit" class="btn btn-success mx-2">Simpan</button>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -68,3 +77,27 @@
         </div>
     </div>
 @endsection
+@push('form-dinamis')
+<script>
+    const add = document.querySelectorAll(".form-group-dinamis .add_pertanyaan")
+    add.forEach(function(e){
+        e.addEventListener('click', function(){
+            let element = this.parentElement
+            // console.log(element);
+            let newElement = document.createElement('div')
+            newElement.classList.add('form-group-dinamis', 'col-md-8 mx-auto')
+            newElement.innerHTML =
+                `<div class="row">
+                    <div class="col-md-10">
+                            <input class="form-control" placeholder="Inputkan Pertanyaan" type="text" name="pertanyaan[]" value=""/>
+                    </div>
+                    <div class="col-md-2">
+                            <button class="btn btn-success add_pertanyaan" href="javascript:void(0);" id="add_pertanyaan" title="Add field">TAMBAH</button>
+                    </div>           
+                </div>`
+            document.getElementById('extra-pertanyaan').appendChild(newElement)
+        })
+        
+    });
+</script>
+@endpush

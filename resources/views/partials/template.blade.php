@@ -140,6 +140,7 @@
 
     <script src="{{ asset('') }}js/dashboard/dashboard-1.js"></script>
     @stack('js')
+    @stack('form-dinamis')
 </body>
 
 </html>
