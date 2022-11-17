@@ -13,37 +13,22 @@
   
 
   <div class="d-lg-flex half">
-    <div class="contents order-2 order-md-2">
+    <div class="contents order-2 order-md-1">
 
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
-            <h3>Selamat Datang di <strong>Tes Online</strong></h3>
-            <p class="mb-4">Login masukkan data diri anda</p>
-            <form action="{{ route('LoginTest') }}" method="POST">
-              @csrf
-              <div class="form-group first">
-                <label for="username">Alamat E-mail</label>
-                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="email">
-              </div>
-              <div class="form-group last mb-5">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Your Password" id="password"  name="password">
-              </div>
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-              <input type="submit" value="Masuk Dengan Google" class="btn btn-block btn-primary">
+            <h3>Selamat anda berhasil login di halaman utama <strong>Tes Online</strong></h3>
+            <p class="mb-4">Pilih selanjutnya agar anda bisa mendapatkan token untuk memulai ujian</p>
+            <form action="#" method="post">
+              <input type="submit" value="Lanjutkan" class="btn btn-block btn-primary">
             </form>
-            <div class="d-flex mt-5 justify-content-center ">
-              <label class="control control--checkbox mb-0"><span class="caption">Tidak Punya Akun ?</span>
-              <span class="ml-auto"><a href="{{ route('RegisterTest') }}" class="forgot-pass text-primary">Register</a></span> 
-              </label>
-            </div>
           </div>
           
         </div>
       </div>
     </div>
-    <div class="bg order-1 order-md-1" style="background-image: url('images/login.jpg');"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('images/inm.jpg');"></div>
 
   </div>
     

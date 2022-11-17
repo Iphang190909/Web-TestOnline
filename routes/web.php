@@ -5,6 +5,8 @@ use App\Http\Controllers\ManagementUserAdminController;
 use App\Http\Controllers\ManagementUserInstansiController;
 use App\Http\Controllers\ManagementUserPesertaController;
 use App\Http\Controllers\ManagementAssesmentSoalController;
+use App\Http\Controllers\UserTestController;
+use App\Http\Controllers\LoginTestController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +25,22 @@ Route::get('/', function () {
     return view('frontend.login');
 });
 
+Route::get('/register-user',[LoginTestController::class,'RegisterTest'])->name('RegisterTest');
+Route::post('/login-user',[LoginTestController::class,'LoginTest'])->name('LoginTest');
+
+
+// Route::middleware('peserta')->group(function () {
+    Route::middleware(['auth', 'peserta'])->group(function () {
+        Route::resource('test',UserTestController::class);
+    });
+// });
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware(['auth'])->group(function () {
+
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
     //management-user
     Route::prefix('user-management')->group(function () {

@@ -18,24 +18,27 @@
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
-            <h3>Selamat Datang di <strong>Tes Online</strong></h3>
-            <p class="mb-4">Login masukkan data diri anda</p>
-            <form action="{{ route('LoginTest') }}" method="POST">
-              @csrf
+            <h3>Register <strong>Tes Online</strong></h3>
+            <p class="mb-4">Daftarkan diri anda</p>
+            <form action="#" method="post">
+              <div class="form-group first">
+                <label for="username">Nama Lengkap</label>
+                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+              </div>
               <div class="form-group first">
                 <label for="username">Alamat E-mail</label>
-                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="email">
+                <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
               </div>
               <div class="form-group last mb-5">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" placeholder="Your Password" id="password"  name="password">
+                <input type="password" class="form-control" placeholder="Your Password" id="password">
               </div>
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <input type="submit" value="Register" class="btn btn-block btn-primary">
               <input type="submit" value="Masuk Dengan Google" class="btn btn-block btn-primary">
             </form>
             <div class="d-flex mt-5 justify-content-center ">
-              <label class="control control--checkbox mb-0"><span class="caption">Tidak Punya Akun ?</span>
-              <span class="ml-auto"><a href="{{ route('RegisterTest') }}" class="forgot-pass text-primary">Register</a></span> 
+              <label class="control control--checkbox mb-0"><span class="caption">Sudah Punya Akun ?</span>
+              <span class="ml-auto"><a href="{{ url('/') }}" class="forgot-pass text-primary">Login</a></span> 
               </label>
             </div>
           </div>
@@ -43,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="bg order-1 order-md-1" style="background-image: url('images/login.jpg');"></div>
+    <div class="bg order-1 order-md-1" style="background-image: url('images/regist.jpg');"></div>
 
   </div>
     
