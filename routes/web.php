@@ -31,7 +31,7 @@ Route::post('/login-user',[LoginTestController::class,'LoginTest'])->name('Login
 
 // Route::middleware('peserta')->group(function () {
     Route::middleware(['auth', 'peserta'])->group(function () {
-        Route::resource('test',UserTestController::class);
+        Route::resource('home',UserTestController::class);
     });
 // });
 
