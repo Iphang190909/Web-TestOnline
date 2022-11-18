@@ -6,6 +6,7 @@ use App\Http\Controllers\ManagementUserInstansiController;
 use App\Http\Controllers\ManagementUserPesertaController;
 use App\Http\Controllers\ManagementAssesmentSoalController;
 use App\Http\Controllers\UserTestController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\LoginTestController;
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
@@ -29,16 +30,17 @@ Route::get('/register-user',[LoginTestController::class,'RegisterTest'])->name('
 Route::post('/login-user',[LoginTestController::class,'LoginTest'])->name('LoginTest');
 
 
-// Route::middleware('peserta')->group(function () {
-    Route::middleware(['auth', 'peserta'])->group(function () {
-        Route::resource('home',UserTestController::class);
-    });
-// });
+Route::middleware(['auth', 'peserta'])->group(function () {
+    Route::get('/home',[UserTestController::class,'index'])->name('home');
+    Route::get('/input-token',[UserTestController::class,'InputToken'])->name('InputToken');
+    Route::resource('test',TestController::class);
+});
 
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
