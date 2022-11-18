@@ -14,7 +14,6 @@
 
   <div class="d-lg-flex half">
     <div class="contents order-2 order-md-2">
-
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">

@@ -1,44 +1,33 @@
 @extends('frontend.template')
 @section('content')
 <div class="container mx-auto my-auto">
+    <div class="d-flex mt-2 justify-content-right">
+        <p class="text-dark">Time : <span id="time"><span></p>
+    </div> 
+        <div class="d-flex my-4 justify-content-left">
+          <span class="ml-auto"><a href="{{ url('/') }}" class="forgot-pass text-primary">Daftar soal</a></span>
+         </div>
     <div class="row d-flex">
-        <div class="col-lg-4">
-            <p class="text-dark">Time : <span id="time"><span></p>
-
+        <div class="col-lg-12 ">
+                <div class="contents order-2 order-md-2">
                 <div class="card" >
-                    <h4 class="card-header mt-0 p-4">Masukkan Token</h4>
+                    <h4 class="card-header mt-0 p-4">Soal 1</h4>
                     <div class="card-body">
-                        <h5 class="card-title">Token dikirim melalui email yang telah anda daftarkan</h5>
-                        <div class="form-group mt-5">
-                        <input class="form-control input-lg" id="inputlg" type="text">
-                        <small class="text-danger">* jika anda sudah yakin pilih mulai ujian untuk melakukan ujian</small>
+                        <h5 class="card-title">Apakah yang dimaksud dengan istilah framework ?</h5>
+                        <div class="form-group mt-6">
+                            <textarea class="form-control" id="jawaban" rows="12" placeholder="tuliskan jawaban anda disini"></textarea>
                         </div>
+                     </div>
                     </div>
-                    <div class="text-center p-5">
-                        <a href="{{ route('test.index') }}" class="btn btn-primary text-center btn-lg">Mulai Ujian</a>
+                    <div class="col-lg-6 mt-5">
+                        <a href="{{ route('test.index') }}" class="btn btn-primary text-center btn-lg">Soal Sebelumnya</a>
+                    </div>
+                    <div class="col-lg-6 mt-5">
+                        <a href="{{ route('test.index') }}" class="btn btn-primary text-center btn-lg">Soal Selanjutnya</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <p class="text-dark">Time : <span id="time"><span></p>
-
-                <div class="card" >
-                    <h4 class="card-header mt-0 p-4">Masukkan Token</h4>
-                    <div class="card-body">
-                        <h5 class="card-title">Token dikirim melalui email yang telah anda daftarkan</h5>
-                        <div class="form-group mt-5">
-                        <input class="form-control input-lg" id="inputlg" type="text">
-                        <small class="text-danger">* jika anda sudah yakin pilih mulai ujian untuk melakukan ujian</small>
-                        </div>
-                    </div>
-                    <div class="text-center p-5">
-                        <a href="{{ route('test.index') }}" class="btn btn-primary text-center btn-lg">Mulai Ujian</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 @endsection
